@@ -1,0 +1,15 @@
+C:\Users\dell\source\repos\FunDoNotes\Manager_Layer\bin\Debug\netcoreapp3.1\Manager_Layer.deps.json
+C:\Users\dell\source\repos\FunDoNotes\Manager_Layer\bin\Debug\netcoreapp3.1\Manager_Layer.dll
+C:\Users\dell\source\repos\FunDoNotes\Manager_Layer\bin\Debug\netcoreapp3.1\Manager_Layer.pdb
+C:\Users\dell\source\repos\FunDoNotes\Manager_Layer\obj\Debug\netcoreapp3.1\Manager_Layer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dell\source\repos\FunDoNotes\Manager_Layer\obj\Debug\netcoreapp3.1\Manager_Layer.AssemblyInfoInputs.cache
+C:\Users\dell\source\repos\FunDoNotes\Manager_Layer\obj\Debug\netcoreapp3.1\Manager_Layer.AssemblyInfo.cs
+C:\Users\dell\source\repos\FunDoNotes\Manager_Layer\obj\Debug\netcoreapp3.1\Manager_Layer.csproj.CoreCompileInputs.cache
+C:\Users\dell\source\repos\FunDoNotes\Manager_Layer\obj\Debug\netcoreapp3.1\Manager_Layer.dll
+C:\Users\dell\source\repos\FunDoNotes\Manager_Layer\obj\Debug\netcoreapp3.1\Manager_Layer.pdb
+C:\Users\dell\source\repos\FunDoNotes\Manager_Layer\bin\Debug\netcoreapp3.1\Common_layer.dll
+C:\Users\dell\source\repos\FunDoNotes\Manager_Layer\bin\Debug\netcoreapp3.1\Repository_layer.dll
+C:\Users\dell\source\repos\FunDoNotes\Manager_Layer\bin\Debug\netcoreapp3.1\Repository_layer.pdb
+C:\Users\dell\source\repos\FunDoNotes\Manager_Layer\bin\Debug\netcoreapp3.1\Common_layer.pdb
+C:\Users\dell\source\repos\FunDoNotes\Manager_Layer\obj\Debug\netcoreapp3.1\Manager_Layer.csproj.AssemblyReference.cache
+C:\Users\dell\source\repos\FunDoNotes\Manager_Layer\obj\Debug\netcoreapp3.1\Manager_Layer.csproj.CopyComplete
