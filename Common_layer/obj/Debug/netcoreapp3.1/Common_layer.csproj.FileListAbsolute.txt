@@ -7,3 +7,4 @@ C:\Users\dell\source\repos\FunDoNotes\Common_layer\obj\Debug\netcoreapp3.1\Commo
 C:\Users\dell\source\repos\FunDoNotes\Common_layer\obj\Debug\netcoreapp3.1\Common_layer.csproj.CoreCompileInputs.cache
 C:\Users\dell\source\repos\FunDoNotes\Common_layer\obj\Debug\netcoreapp3.1\Common_layer.dll
 C:\Users\dell\source\repos\FunDoNotes\Common_layer\obj\Debug\netcoreapp3.1\Common_layer.pdb
+C:\Users\dell\source\repos\FunDoNotes\Common_layer\obj\Debug\netcoreapp3.1\Common_layer.sourcelink.json

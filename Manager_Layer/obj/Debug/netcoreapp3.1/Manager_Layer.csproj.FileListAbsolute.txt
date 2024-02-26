@@ -13,3 +13,4 @@ C:\Users\dell\source\repos\FunDoNotes\Manager_Layer\bin\Debug\netcoreapp3.1\Repo
 C:\Users\dell\source\repos\FunDoNotes\Manager_Layer\bin\Debug\netcoreapp3.1\Common_layer.pdb
 C:\Users\dell\source\repos\FunDoNotes\Manager_Layer\obj\Debug\netcoreapp3.1\Manager_Layer.csproj.AssemblyReference.cache
 C:\Users\dell\source\repos\FunDoNotes\Manager_Layer\obj\Debug\netcoreapp3.1\Manager_Layer.csproj.CopyComplete
+C:\Users\dell\source\repos\FunDoNotes\Manager_Layer\obj\Debug\netcoreapp3.1\Manager_Layer.sourcelink.json
