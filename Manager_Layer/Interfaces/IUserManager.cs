@@ -9,5 +9,8 @@ namespace Manager_Layer.Interfaces
     public interface IUserManager
     {
         public User UserRegisteration(RegisterModel model);
+        public string UserLogin(LoginModel model);
+        public string ForgotPassword(string email);
+        public string GenerateToken(string Email, int Id);
     }
 }

@@ -8,16 +8,28 @@ using System.Text;
 
 namespace Manager_Layer.Services
 {
-    public class UserManager: IUserManager
+    public class UserManager : IUserManager
     {
         private readonly IUserRepository repository;
-        public UserManager(IUserRepository repository) 
+        public UserManager(IUserRepository repository)
         {
             this.repository = repository;
         }
         public User UserRegisteration(RegisterModel model)
         {
             return repository.UserRegisteration(model);
+        }
+        public string UserLogin(LoginModel model)
+        {
+            return repository.UserLogin(model);
+        }
+        public string ForgotPassword(string email)
+        {
+            return repository.ForgotPassword(email);
+        }
+        public string GenerateToken(string Email, int Id)
+        {
+            return repository.GenerateToken(Email, Id);
         }
     }
 }
