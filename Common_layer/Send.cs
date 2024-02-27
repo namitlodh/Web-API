@@ -10,9 +10,10 @@ namespace Common_layer
     {
         public string SendMail(string ToEmail,string Token)
         {
-            string FromEmail = "namitlodh2605@gmail.com";
+            string FromEmail = "namitlodg2605@gmail.com";
             MailMessage Message= new MailMessage(FromEmail, ToEmail);
             string MailBody = "the token for the reset password: " + Token;
+            Message.Subject = "Token Genereted for resetting Password";
             Message.Body = MailBody.ToString();
             Message.BodyEncoding = Encoding.UTF8;
             Message.IsBodyHtml = true;

@@ -31,5 +31,13 @@ namespace Manager_Layer.Services
         {
             return repository.GenerateToken(Email, Id);
         }
+        public bool IsEmailAlreadyRegistered(string email)
+        {
+            return repository.IsEmailAlreadyRegistered(email);
+        }
+        public bool ResetPassword(string Email, ResetPasswordModel model)
+        {
+            return repository.ResetPassword(Email, model);
+        }
     }
 }
