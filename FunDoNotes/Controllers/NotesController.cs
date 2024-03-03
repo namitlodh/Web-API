@@ -55,11 +55,11 @@ namespace FunDoNotes.Controllers
             }
         }
         [Authorize]
-        [HttpPost]
+        [HttpPut]
         [Route("Update")]
-        public ActionResult UpdateNote(UpdateNoteModel model, int id) 
+        public ActionResult UpdateNote(UpdateNoteModel model, int Notesid) 
         {
-            var repsonse = notemanager.Update(model, id);
+            var repsonse = notemanager.Update(model, Notesid);
             if (repsonse != null)
             {
                 return Ok(new ResModel<NoteEntity> { Success = true, Message = "Update Note Success", Data = repsonse });
@@ -68,6 +68,24 @@ namespace FunDoNotes.Controllers
             else
             {
                 return BadRequest(new ResModel<NoteEntity> { Success = false, Message = "Update Note Failed", Data = repsonse });
+            }
+        }
+        [Authorize]
+        [HttpPut]
+        [Route("Trash")]
+        public ActionResult Trash(int NotesId)
+        {
+
+            var response = notemanager.Trash(NotesId);
+            if (response != null)
+            {
+
+                return Ok(new ResModel<NoteEntity> { Success = true, Message = "Trash Note Success", Data = response });
+
+            }
+            else
+            {
+                return BadRequest(new ResModel<NoteEntity> { Success = false, Message = "Trash Note Failed", Data = response });
             }
         }
     }

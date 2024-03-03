@@ -1,4 +1,5 @@
 ﻿using Common_layer.RequestModel;
+using Microsoft.EntityFrameworkCore;
 using Repository_layer.Context;
 using Repository_layer.Entity;
 using Repository_layer.Interfaces;
@@ -50,6 +51,24 @@ namespace Repository_layer.Services
                 return noteToUpdate;
             }
             return null;
+        }
+        public NoteEntity Trash(int NotesId)
+        {
+            var trash = fundoContext.Notes.FirstOrDefault(notes => notes.NotesId == NotesId);
+            if(trash != null)
+            {
+                if (trash.IsTrash)
+                {
+                    trash.IsTrash = false;
+                    fundoContext.SaveChanges();
+
+                }
+                else
+                {
+                    trash.IsTrash = true;
+                }
+            }
+            return trash;
         }
     }
 }

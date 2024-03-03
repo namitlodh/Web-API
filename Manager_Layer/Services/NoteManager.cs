@@ -27,5 +27,9 @@ namespace Manager_Layer.Services
         {
             return repository.Update(model,NotesId);    
         }
+        public NoteEntity Trash(int NotesId)
+        {
+            return repository.Trash(NotesId);
+        }
     }
 }
