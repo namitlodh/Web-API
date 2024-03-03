@@ -75,7 +75,6 @@ namespace FunDoNotes.Controllers
         [Route("Trash")]
         public ActionResult Trash(int NotesId)
         {
-
             var response = notemanager.Trash(NotesId);
             if (response != null)
             {
@@ -86,6 +85,31 @@ namespace FunDoNotes.Controllers
             else
             {
                 return BadRequest(new ResModel<NoteEntity> { Success = false, Message = "Trash Note Failed", Data = response });
+            }
+        }
+        [Authorize]
+        [HttpDelete]
+        [Route("Delete")]
+        public ActionResult Delete(int NotesId,int Id) 
+        {
+            try
+            {
+                int uid= Convert.ToInt32(User.FindFirst("Id").Value);
+                var response = notemanager.Delete(NotesId,uid);
+                if (response != null)
+                {
+
+                    return Ok(new ResModel<NoteEntity> { Success = true, Message = "Note Deleted Successfully", Data = response });
+
+                }
+                else
+                {
+                    return BadRequest(new ResModel<NoteEntity> { Success = false, Message = "Note Deletion Failed", Data = response });
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new ResModel<NoteEntity> { Success = false, Message = ex.Message, Data = null });
             }
         }
     }

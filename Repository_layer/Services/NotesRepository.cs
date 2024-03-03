@@ -70,5 +70,19 @@ namespace Repository_layer.Services
             }
             return trash;
         }
+        public NoteEntity Delete(int NotesId, int Id)
+        {
+            var delete = fundoContext.Notes.FirstOrDefault(notes=>(notes.NotesId==NotesId) && (notes.Id== Id));
+            if(delete != null)
+            {
+                fundoContext.Notes.Remove(delete);
+                fundoContext.SaveChanges();
+            }
+            else
+            {
+                throw new Exception("Wrong data");
+            }
+            return delete;
+        }
     }
 }
