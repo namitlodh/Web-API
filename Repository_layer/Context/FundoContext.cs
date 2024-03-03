@@ -10,7 +10,8 @@ namespace Repository_layer.Context
     {
         public FundoContext(DbContextOptions options):base(options)
         { }
-        DbSet<DemoEntity> DemoEntities { get; set; }
+        public DbSet<DemoEntity> DemoEntities { get; set; }
         public DbSet<User> users { get; set; }
+        public DbSet<NoteEntity> Notes { get; set; }
     }
 }

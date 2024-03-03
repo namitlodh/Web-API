@@ -6,6 +6,7 @@ using MassTransit;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Linq;
 using Repository_layer.Context;
 using Repository_layer.Entity;
@@ -23,11 +24,13 @@ namespace FunDoNotes.Controllers
         private readonly IUserManager userManager;
         private readonly FundoContext context1;
         private readonly IBus bus;
-        public UserController(IUserManager userManager, IBus bus, FundoContext context1)
+        private readonly ILogger<UserController> logger;
+        public UserController(IUserManager userManager, IBus bus, FundoContext context1, ILogger<UserController> logger)
         {
             this.userManager = userManager;
             this.bus = bus;
             this.context1= context1;
+            this.logger = logger;
         }
 
         [HttpPost]
@@ -37,10 +40,12 @@ namespace FunDoNotes.Controllers
             var repsonse = userManager.UserRegisteration(model);
             if(repsonse != null)
             {
+                logger.LogInformation("Register Succesfull");
                 return Ok(new ResModel<User> { Success = true, Message = "register successfull", Data = repsonse });
             }
             else
             {
+
                 return BadRequest(new ResModel<User> { Success = false, Message = "Resgister failed", Data= repsonse });
             }
         }
