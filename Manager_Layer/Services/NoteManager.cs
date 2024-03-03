@@ -39,5 +39,9 @@ namespace Manager_Layer.Services
         {  
             return repository.Archive(NotesId); 
         }
+        public NoteEntity Pin(int NotesId)
+        {
+            return repository.Pin(NotesId);
+        }
     }
 }

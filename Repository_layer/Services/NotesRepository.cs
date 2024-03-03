@@ -105,5 +105,26 @@ namespace Repository_layer.Services
                 throw new Exception("Data not found");
             }
         }
+        public NoteEntity Pin(int NotesId) 
+        {
+            var pin = fundoContext.Notes.FirstOrDefault(notes => notes.NotesId == NotesId);
+            if (pin != null)
+            {
+                if (pin.IsPin)
+                {
+                    pin.IsPin = false;
+                    fundoContext.SaveChanges();
+                }
+                else
+                {
+                    pin.IsPin = true;
+                }
+                return pin;
+            }
+            else
+            {
+                throw new Exception("Data not found");
+            }
+        }
     }
 }

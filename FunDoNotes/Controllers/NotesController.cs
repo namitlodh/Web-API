@@ -73,7 +73,7 @@ namespace FunDoNotes.Controllers
         [Authorize]
         [HttpPut]
         [Route("Trash")]
-        public ActionResult Trash(int NotesId)
+        public ActionResult TrashNote(int NotesId)
         {
             var response = notemanager.Trash(NotesId);
             if (response != null)
@@ -90,7 +90,7 @@ namespace FunDoNotes.Controllers
         [Authorize]
         [HttpDelete]
         [Route("Delete")]
-        public ActionResult Delete(int NotesId,int Id) 
+        public ActionResult DeleteNote(int NotesId,int Id) 
         {
             try
             {
@@ -115,7 +115,7 @@ namespace FunDoNotes.Controllers
         [Authorize]
         [HttpPut]
         [Route("Archive")]
-        public ActionResult Archive(int NotesId)
+        public ActionResult ArchiveNote(int NotesId)
         {
             try
             {
@@ -128,6 +128,29 @@ namespace FunDoNotes.Controllers
                 else
                 {
                     return BadRequest(new ResModel<NoteEntity> { Success = false, Message = "Note Archive Failed", Data = response });
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new ResModel<NoteEntity> { Success = false, Message = ex.Message, Data = null });
+            }
+        }
+        [Authorize]
+        [HttpPut]
+        [Route("Pin")]
+        public ActionResult PinNote(int NotesId)
+        {
+            try
+            {
+                var response = notemanager.Pin(NotesId);
+                if (response != null)
+                {
+                    return Ok(new ResModel<NoteEntity> { Success = true, Message = "Note Pinned Success", Data = response });
+
+                }
+                else
+                {
+                    return BadRequest(new ResModel<NoteEntity> { Success = false, Message = "Note Pin Failed", Data = response });
                 }
             }
             catch (Exception ex)

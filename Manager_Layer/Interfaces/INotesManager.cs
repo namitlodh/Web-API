@@ -14,5 +14,6 @@ namespace Manager_Layer.Interfaces
         public NoteEntity Trash(int NotesId);
         public NoteEntity Delete(int NotesId, int Id);
         public NoteEntity Archive(int NotesId);
+        public NoteEntity Pin(int NotesId);
     }
 }
