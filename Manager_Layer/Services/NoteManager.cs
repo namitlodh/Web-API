@@ -15,10 +15,13 @@ namespace Manager_Layer.Services
         {
             this.repository = repository;
         }
-        public NoteEntity AddNote(AddNoteModel model)
+        public NoteEntity AddNote(AddNoteModel model, int Id)
         {
-            return repository.AddNote(model);
+            return repository.AddNote(model,Id);
         }
-        
+        public List<NoteEntity> GetAll(int id)
+        {
+            return repository.GetAll(id);
+        }
     }
 }

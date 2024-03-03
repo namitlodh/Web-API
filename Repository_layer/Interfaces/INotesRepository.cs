@@ -8,7 +8,7 @@ namespace Repository_layer.Interfaces
 {
     public interface INotesRepository
     {
-        public NoteEntity AddNote(AddNoteModel model);
-        
+        public NoteEntity AddNote(AddNoteModel model,int Id);
+        public List<NoteEntity> GetAll(int id);
     }
 }

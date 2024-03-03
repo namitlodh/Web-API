@@ -8,7 +8,7 @@ namespace Manager_Layer.Interfaces
 {
     public interface INotesManager
     {
-        public NoteEntity AddNote(AddNoteModel model);
-        
+        public NoteEntity AddNote(AddNoteModel model, int Id);
+        public List<NoteEntity> GetAll(int id);
     }
 }

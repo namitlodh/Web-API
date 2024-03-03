@@ -9,35 +9,34 @@ using System.Text;
 
 namespace Repository_layer.Services
 {
-    public class NotesRepository:INotesRepository
+    public class NotesRepository : INotesRepository
     {
         private readonly FundoContext fundoContext;
         public NotesRepository(FundoContext fundoContext)
         {
             this.fundoContext = fundoContext;
         }
-        public NoteEntity AddNote(AddNoteModel model,int id)
+        public NoteEntity AddNote(AddNoteModel model,int Id)
         {
             NoteEntity note = new NoteEntity();
+            note.Id = Id;
             note.Title = model.Title;
             note.Description = model.Description;
-            note.Id = id;
-            note.Reminder = DateTime.Now;
-            note.Colour = null;
-            note.Image = null;
-            note.IsArchive = false;
-            note.IsPin = false;
-            note.IsTrash = false;
-            note.CreatedAt = DateTime.Now;
-            note.UpdatedAt = DateTime.Now;
-            note.NotesUser = null;
+            note.Reminder = model.Reminder;
+            note.Colour = model.Colour;
+            note.Image = model.Image;
+            note.IsArchive = model.IsArchive;
+            note.IsPin = model.IsPin;
+            note.IsTrash = model.IsTrash;
+            note.CreatedAt = DateTime.UtcNow;
+            note.UpdatedAt = DateTime.UtcNow;
             fundoContext.Notes.Add(note);
             fundoContext.SaveChanges();
             return note;
         }
-        //public List<NoteEntity> GetAll(int id)
-        //{
-        //    return fundoContext.Notes.Where(x=> x.Id == id).ToList();
-        //}
+        public List<NoteEntity> GetAll(int id)
+        {
+            return fundoContext.Notes.Where(x => x.Id == id).ToList();
+        }
     }
 }
