@@ -112,5 +112,28 @@ namespace FunDoNotes.Controllers
                 return BadRequest(new ResModel<NoteEntity> { Success = false, Message = ex.Message, Data = null });
             }
         }
+        [Authorize]
+        [HttpPut]
+        [Route("Archive")]
+        public ActionResult Archive(int NotesId)
+        {
+            try
+            {
+                var response = notemanager.Archive(NotesId);
+                if (response != null)
+                {
+                    return Ok(new ResModel<NoteEntity> { Success = true, Message = "Note Archived Success", Data = response });
+
+                }
+                else
+                {
+                    return BadRequest(new ResModel<NoteEntity> { Success = false, Message = "Note Archive Failed", Data = response });
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new ResModel<NoteEntity> { Success = false, Message = ex.Message, Data = null });
+            }
+        }
     }
 }

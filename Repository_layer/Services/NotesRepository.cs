@@ -84,5 +84,26 @@ namespace Repository_layer.Services
             }
             return delete;
         }
+        public NoteEntity Archive(int NotesId)
+        {
+            var archive = fundoContext.Notes.FirstOrDefault(notes => notes.NotesId == NotesId);
+            if (archive != null)
+            {
+                if (archive.IsArchive)
+                {
+                    archive.IsArchive = false;
+                    fundoContext.SaveChanges();
+                }
+                else
+                {
+                    archive.IsArchive = true;
+                }
+                return archive;
+            }
+            else
+            {
+                throw new Exception("Data not found");
+            }
+        }
     }
 }

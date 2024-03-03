@@ -13,5 +13,6 @@ namespace Manager_Layer.Interfaces
         public NoteEntity Update(UpdateNoteModel model, int NotesId);
         public NoteEntity Trash(int NotesId);
         public NoteEntity Delete(int NotesId, int Id);
+        public NoteEntity Archive(int NotesId);
     }
 }

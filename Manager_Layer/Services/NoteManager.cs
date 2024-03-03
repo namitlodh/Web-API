@@ -35,5 +35,9 @@ namespace Manager_Layer.Services
         {
             return repository.Delete(NotesId, Id);
         }
+        public NoteEntity Archive(int NotesId) 
+        {  
+            return repository.Archive(NotesId); 
+        }
     }
 }
