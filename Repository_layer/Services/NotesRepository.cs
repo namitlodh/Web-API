@@ -126,5 +126,15 @@ namespace Repository_layer.Services
                 throw new Exception("Data not found");
             }
         }
+        public NoteEntity Colour(int NotesId)
+        {
+            var colour = fundoContext.Notes.FirstOrDefault(notes => notes.NotesId == NotesId);
+            if(colour != null)
+            {
+                colour.Colour = "Blue";
+                fundoContext.SaveChanges();
+            }
+            return colour;
+        }
     }
 }

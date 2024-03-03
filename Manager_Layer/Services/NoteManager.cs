@@ -43,5 +43,9 @@ namespace Manager_Layer.Services
         {
             return repository.Pin(NotesId);
         }
+        public NoteEntity Colour(int NotesId)
+        {
+            return repository.Colour(NotesId);
+        }
     }
 }

@@ -158,5 +158,20 @@ namespace FunDoNotes.Controllers
                 return BadRequest(new ResModel<NoteEntity> { Success = false, Message = ex.Message, Data = null });
             }
         }
+        [Authorize]
+        [HttpPut]
+        [Route("Colour")]
+        public ActionResult ColourNote(int NotesId)
+        {
+            var response = notemanager.Colour(NotesId);
+            if (response != null)
+            {
+                return Ok(new ResModel<NoteEntity> { Success = true, Message = "Note Coloured Successfully", Data = response });
+            }
+            else
+            {
+                return BadRequest(new ResModel<NoteEntity> { Success = false, Message = "Note Colour Failed", Data = response });
+            }
+        }
     }
 }
