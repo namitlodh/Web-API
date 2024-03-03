@@ -23,5 +23,9 @@ namespace Manager_Layer.Services
         {
             return repository.GetAll(id);
         }
+        public NoteEntity Update(UpdateNoteModel model, int NotesId)
+        {
+            return repository.Update(model,NotesId);    
+        }
     }
 }

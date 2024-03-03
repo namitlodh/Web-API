@@ -10,5 +10,6 @@ namespace Manager_Layer.Interfaces
     {
         public NoteEntity AddNote(AddNoteModel model, int Id);
         public List<NoteEntity> GetAll(int id);
+        public NoteEntity Update(UpdateNoteModel model, int NotesId);
     }
 }

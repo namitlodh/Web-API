@@ -38,5 +38,18 @@ namespace Repository_layer.Services
         {
             return fundoContext.Notes.Where(x => x.Id == id).ToList();
         }
+        public NoteEntity Update(UpdateNoteModel model,int NotesId)
+        {
+            var noteToUpdate = fundoContext.Notes.FirstOrDefault(notes=>notes.NotesId == NotesId);
+            if (noteToUpdate != null)
+            {
+                noteToUpdate.Title= model.Title;
+                noteToUpdate.Description= model.Description;
+                noteToUpdate.UpdatedAt = DateTime.UtcNow;
+                fundoContext.SaveChanges();
+                return noteToUpdate;
+            }
+            return null;
+        }
     }
 }

@@ -54,5 +54,21 @@ namespace FunDoNotes.Controllers
                 return BadRequest(new ResModel<List<NoteEntity>> { Success = false, Message = "Get Note Failure", Data = null });
             }
         }
+        [Authorize]
+        [HttpPost]
+        [Route("Update")]
+        public ActionResult UpdateNote(UpdateNoteModel model, int id) 
+        {
+            var repsonse = notemanager.Update(model, id);
+            if (repsonse != null)
+            {
+                return Ok(new ResModel<NoteEntity> { Success = true, Message = "Update Note Success", Data = repsonse });
+
+            }
+            else
+            {
+                return BadRequest(new ResModel<NoteEntity> { Success = false, Message = "Update Note Failed", Data = repsonse });
+            }
+        }
     }
 }
