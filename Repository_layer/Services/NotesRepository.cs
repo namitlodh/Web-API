@@ -1,4 +1,6 @@
-﻿using Common_layer.RequestModel;
+﻿using CloudinaryDotNet;
+using CloudinaryDotNet.Actions;
+using Common_layer.RequestModel;
 using Microsoft.EntityFrameworkCore;
 using Repository_layer.Context;
 using Repository_layer.Entity;
@@ -6,6 +8,7 @@ using Repository_layer.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 
 namespace Repository_layer.Services
@@ -145,6 +148,41 @@ namespace Repository_layer.Services
                 fundoContext.SaveChanges();
             }
             return reminder;
+        }
+        public string UploadImage(string filepath, int NotesId, int Id)
+        {
+            try
+            {
+                var filterid = fundoContext.Notes.Where(user => user.Id == Id);
+                if(filterid!=null)
+                {
+                    var findNotes = filterid.FirstOrDefault(notes => notes.NotesId == NotesId);
+                    if (findNotes != null)
+                    {
+                        Account account = new Account("dfsswxqdn", "913586421619367", "C958eogB65GJaEbl3PV0_WUvGRY");
+                        Cloudinary cloudinary = new Cloudinary(account);
+                        ImageUploadParams uploadParams = new ImageUploadParams()
+                        {
+                            File = new FileDescription(filepath),
+                            PublicId = findNotes.Title
+                        };
+                        ImageUploadResult uploadResult = cloudinary.Upload(uploadParams);
+                        findNotes.UpdatedAt = DateTime.Now;
+                        findNotes.Image = uploadResult.Url.ToString();
+                        fundoContext.SaveChanges();
+                        return "Upload Successfull";
+                    }
+                    return null;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
     }
 }

@@ -76,3 +76,4 @@ C:\Users\dell\source\repos\FunDoNotes\FunDoNotes\bin\Debug\netcoreapp3.1\RabbitM
 C:\Users\dell\source\repos\FunDoNotes\FunDoNotes\bin\Debug\netcoreapp3.1\NLog.dll
 C:\Users\dell\source\repos\FunDoNotes\FunDoNotes\bin\Debug\netcoreapp3.1\NLog.Extensions.Logging.dll
 C:\Users\dell\source\repos\FunDoNotes\FunDoNotes\bin\Debug\netcoreapp3.1\NLog.Web.AspNetCore.dll
+C:\Users\dell\source\repos\FunDoNotes\FunDoNotes\bin\Debug\netcoreapp3.1\CloudinaryDotNet.dll

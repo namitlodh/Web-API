@@ -51,5 +51,9 @@ namespace Manager_Layer.Services
         {
             return repository.Reminder(NotesId);
         }
+        public string UploadImage(string filepath, int NotesId, int Id)
+        {
+            return repository.UploadImage(filepath, NotesId, Id);
+        }
     }
 }

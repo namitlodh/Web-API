@@ -17,5 +17,6 @@ namespace Repository_layer.Interfaces
         public NoteEntity Pin(int NotesId);
         public NoteEntity Colour(int NotesId);
         public NoteEntity Reminder(int NotesId);
+        public string UploadImage(string filepath, int NotesId, int Id);
     }
 }

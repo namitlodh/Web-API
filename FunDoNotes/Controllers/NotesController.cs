@@ -188,5 +188,20 @@ namespace FunDoNotes.Controllers
                 return BadRequest(new ResModel<NoteEntity> { Success = false, Message = "Note Reminder Failed", Data = response });
             }
         }
+        [Authorize]
+        [HttpPut]
+        [Route("UploadImage")]
+        public ActionResult UploadImageNote(string filepath, int NotesId, int Id)
+        {
+            var response = notemanager.UploadImage(filepath,NotesId,Id);
+            if (response != null)
+            {
+                return Ok(new ResModel<string> { Success = true, Message = "Image Uploaded Success", Data = response });
+            }
+            else
+            {
+                return BadRequest(new ResModel<string> { Success = false, Message = "Image Uploaded Failed", Data = response });
+            }
+        }
     }
 }
