@@ -47,5 +47,9 @@ namespace Manager_Layer.Services
         {
             return repository.Colour(NotesId);
         }
+        public NoteEntity Reminder(int NotesId)
+        {
+            return repository.Reminder(NotesId);
+        }
     }
 }

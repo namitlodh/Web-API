@@ -173,5 +173,20 @@ namespace FunDoNotes.Controllers
                 return BadRequest(new ResModel<NoteEntity> { Success = false, Message = "Note Colour Failed", Data = response });
             }
         }
+        [Authorize]
+        [HttpPut]
+        [Route("Reminder")]
+        public ActionResult ReminderNote(int NotesId)
+        {
+            var response = notemanager.Reminder(NotesId);
+            if (response != null)
+            {
+                return Ok(new ResModel<NoteEntity> { Success = true, Message = "Note Reminder Success", Data = response });
+            }
+            else
+            {
+                return BadRequest(new ResModel<NoteEntity> { Success = false, Message = "Note Reminder Failed", Data = response });
+            }
+        }
     }
 }

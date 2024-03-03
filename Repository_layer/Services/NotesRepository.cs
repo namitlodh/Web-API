@@ -136,5 +136,15 @@ namespace Repository_layer.Services
             }
             return colour;
         }
+        public NoteEntity Reminder(int NotesId)
+        {
+            var reminder = fundoContext.Notes.FirstOrDefault(notes => notes.NotesId == NotesId);
+            if(reminder != null)
+            {
+                reminder.Reminder = DateTime.UtcNow;
+                fundoContext.SaveChanges();
+            }
+            return reminder;
+        }
     }
 }

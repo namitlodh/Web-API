@@ -16,5 +16,6 @@ namespace Manager_Layer.Interfaces
         public NoteEntity Archive(int NotesId);
         public NoteEntity Pin(int NotesId);
         public NoteEntity Colour(int NotesId);
+        public NoteEntity Reminder(int NotesId);
     }
 }
