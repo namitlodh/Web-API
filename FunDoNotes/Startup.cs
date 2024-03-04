@@ -43,6 +43,8 @@ namespace FunDoNotes
             services.AddTransient<INotesManager, NoteManager>();
             services.AddTransient<IUserLabelRepository, UserLabelRepository>();
             services.AddTransient<IUserLabelManager, UserLabelManager>();
+            services.AddTransient<ICollaborationRepository, CollaborationRepository>();
+            services.AddTransient<ICollaborationManager, CollaborationManager>();
             services.AddControllers();
             services.AddSwaggerGen(option =>
             {

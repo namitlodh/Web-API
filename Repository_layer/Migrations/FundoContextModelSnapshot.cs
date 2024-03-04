@@ -19,6 +19,40 @@ namespace Repository_layer.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("Repository_layer.Entity.CollaborationEntity", b =>
+                {
+                    b.Property<int>("CollabId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CollanEmail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsTrash")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("NotesId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("CollabId");
+
+                    b.HasIndex("Id");
+
+                    b.HasIndex("NotesId");
+
+                    b.ToTable("Collaborations");
+                });
+
             modelBuilder.Entity("Repository_layer.Entity.DemoEntity", b =>
                 {
                     b.Property<int>("Id")
@@ -134,6 +168,21 @@ namespace Repository_layer.Migrations
                     b.HasIndex("NotesId");
 
                     b.ToTable("UserLabels");
+                });
+
+            modelBuilder.Entity("Repository_layer.Entity.CollaborationEntity", b =>
+                {
+                    b.HasOne("Repository_layer.Entity.User", "NotesUser")
+                        .WithMany()
+                        .HasForeignKey("Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Repository_layer.Entity.NoteEntity", "NoteEntity")
+                        .WithMany()
+                        .HasForeignKey("NotesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Repository_layer.Entity.NoteEntity", b =>
