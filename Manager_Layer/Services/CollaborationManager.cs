@@ -18,5 +18,9 @@ namespace Manager_Layer.Services
         {
             return repository.AddCollab(Id, Noteid, email);
         }
+        public List<string> FetchCollaboator(int Id, int NoteId)
+        {
+            return repository.FetchCollaboator(Id, NoteId);
+        }
     }
 }

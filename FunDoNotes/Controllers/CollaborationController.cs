@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Repository_layer.Entity;
 using System;
+using System.Collections.Generic;
 
 namespace FunDoNotes.Controllers
 {
@@ -31,6 +32,22 @@ namespace FunDoNotes.Controllers
             else
             {
                 return BadRequest(new ResModel<CollaborationEntity> { Success = false, Message = "collaboration not added", Data = response });
+            }
+        }
+        [Authorize]
+        [HttpPut]
+        [Route("Fetch")]
+        public ActionResult Fetch(int Noteid)
+        {
+            int Id = Convert.ToInt32(User.FindFirst("Id").Value);
+            var response = collaborationManager.FetchCollaboator(Id, Noteid);
+            if (response != null)
+            {
+                return Ok(new ResModel<List<string>> { Success = true, Message = "collaboration added", Data = response });
+            }
+            else
+            {
+                return BadRequest(new ResModel<List<string>> { Success = false, Message = "collaboration not added", Data = response });
             }
         }
     }

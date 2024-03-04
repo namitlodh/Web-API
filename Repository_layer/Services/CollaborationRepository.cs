@@ -35,5 +35,16 @@ namespace Repository_layer.Services
             }
             return null;
         }
+        public List<string> FetchCollaboator(int Id,int NoteId)
+        {
+            List<string> ret = new List<string>();
+            List<CollaborationEntity> collaborations = new List<CollaborationEntity>();
+            collaborations = fundoContext.Collaborations.Where(x=>x.Id==Id && x.NotesId==NoteId).ToList();
+            foreach (var collaboration in collaborations)
+            {
+                ret.Add(collaboration.CollanEmail);
+            }
+            return ret;
+        }
     }
 }
