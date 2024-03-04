@@ -9,5 +9,6 @@ namespace Repository_layer.Interfaces
     {
         public UserLabelEntity AddLabelNotes(int UserId, int NoteId, string LabelNames);
         public List<UserLabelEntity> GetLabel(int id, string labelNames);
+        public UserLabelEntity Updatelabel(int id, int Noteid, string newname);
     }
 }

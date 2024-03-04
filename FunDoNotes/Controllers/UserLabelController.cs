@@ -51,5 +51,21 @@ namespace FunDoNotes.Controllers
                 return BadRequest(new ResModel<List<UserLabelEntity>> { Success = false, Message = "label not fetched", Data = response });
             }
         }
+        [Authorize]
+        [HttpPut]
+        [Route("Updatelabel")]
+        public ActionResult UpdateLabel(int Noteid, string labelname)
+        {
+            int id = Convert.ToInt32(User.FindFirst("Id").Value);
+            var response = userLabelManager.Updatelabel(id,Noteid,labelname);
+            if (response != null)
+            {
+                return Ok(new ResModel<UserLabelEntity> { Success = true, Message = "label updated", Data = response });
+            }
+            else
+            {
+                return BadRequest(new ResModel<UserLabelEntity> { Success = false, Message = "label not updated", Data = response });
+            }
+        }
     }
 }

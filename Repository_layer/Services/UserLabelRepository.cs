@@ -29,11 +29,22 @@ namespace Repository_layer.Services
                 fundoContext.SaveChanges();
                 return userLabelEntity;
             }
-            return userLabelEntity;
+            return addlabel;
         }
         public List<UserLabelEntity> GetLabel(int id, string labelNames)
         {
             return fundoContext.UserLabels.Where(label => label.Id == id && label.LabelName==labelNames).ToList();
+        }
+        public UserLabelEntity Updatelabel(int id,int Noteid,string newname)
+        {
+            var updatelabel=fundoContext.UserLabels.FirstOrDefault(label=>label.Id==id && label.NotesId==Noteid);
+            if(updatelabel != null)
+            {
+                updatelabel.LabelName = newname;
+                fundoContext.SaveChanges();
+                return updatelabel;
+            }
+            return null;
         }
     }
 }

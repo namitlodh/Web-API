@@ -22,5 +22,9 @@ namespace Manager_Layer.Services
         {
             return repository.GetLabel(id, labelNames);
         }
+        public UserLabelEntity Updatelabel(int id, int Noteid, string newname)
+        {
+            return repository.Updatelabel(id, Noteid, newname);
+        }
     }
 }
