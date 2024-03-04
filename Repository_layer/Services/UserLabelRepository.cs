@@ -31,6 +31,9 @@ namespace Repository_layer.Services
             }
             return userLabelEntity;
         }
-
+        public List<UserLabelEntity> GetLabel(int id, string labelNames)
+        {
+            return fundoContext.UserLabels.Where(label => label.Id == id && label.LabelName==labelNames).ToList();
+        }
     }
 }

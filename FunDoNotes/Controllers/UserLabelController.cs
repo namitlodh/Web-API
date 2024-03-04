@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Repository_layer.Entity;
 using System;
+using System.Collections.Generic;
 
 namespace FunDoNotes.Controllers
 {
@@ -32,6 +33,22 @@ namespace FunDoNotes.Controllers
             else
             {
                 return BadRequest(new ResModel<UserLabelEntity> { Success = false, Message = "label not added", Data = response });
+            }
+        }
+        [Authorize]
+        [HttpGet]
+        [Route("{id}", Name = "GetLabel")]
+        public ActionResult Getlabel(string LabelNames)
+        {
+            int Id = Convert.ToInt32(User.FindFirst("Id").Value);
+            var response = userLabelManager.GetLabel(Id,LabelNames);
+            if (response != null)
+            {
+                return Ok(new ResModel<List<UserLabelEntity>> { Success = true, Message = "label fetched", Data = response });
+            }
+            else
+            {
+                return BadRequest(new ResModel<List<UserLabelEntity>> { Success = false, Message = "label not fetched", Data = response });
             }
         }
     }

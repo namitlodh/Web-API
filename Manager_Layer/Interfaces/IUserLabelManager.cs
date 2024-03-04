@@ -8,5 +8,6 @@ namespace Manager_Layer.Interfaces
     public interface IUserLabelManager
     {
         public UserLabelEntity AddLabelNotes(int UserId, int NoteId, string LabelNames);
+        public List<UserLabelEntity> GetLabel(int id, string labelNames);
     }
 }

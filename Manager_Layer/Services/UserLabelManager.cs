@@ -18,5 +18,9 @@ namespace Manager_Layer.Services
         {
             return repository.AddLabelNotes(UserId, NoteId, LabelNames);
         }
+        public List<UserLabelEntity> GetLabel(int id, string labelNames)
+        {
+            return repository.GetLabel(id, labelNames);
+        }
     }
 }
