@@ -9,5 +9,6 @@ namespace Manager_Layer.Interfaces
     {
         public CollaborationEntity AddCollab(int Id, int Noteid, string email);
         public List<string> FetchCollaboator(int Id, int NoteId);
+        public CollaborationEntity TrashCollab(int Id, int NoteId, string email);
     }
 }

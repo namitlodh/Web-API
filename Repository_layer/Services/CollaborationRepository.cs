@@ -46,5 +46,19 @@ namespace Repository_layer.Services
             }
             return ret;
         }
+        public CollaborationEntity TrashCollab(int Id,int NoteId, string email)
+        {
+            var trash =fundoContext.Collaborations.FirstOrDefault(collab=>collab.Id==Id && collab.NotesId==NoteId && collab.CollanEmail==email);
+            if(trash != null)
+            {
+                trash.IsTrash = true;
+                fundoContext.SaveChanges();
+            }
+            else 
+            { 
+                trash.IsTrash= false; 
+            }
+            return trash;
+        }
     }
 }

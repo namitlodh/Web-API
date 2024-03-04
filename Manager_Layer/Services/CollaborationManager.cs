@@ -22,5 +22,9 @@ namespace Manager_Layer.Services
         {
             return repository.FetchCollaboator(Id, NoteId);
         }
+        public CollaborationEntity TrashCollab(int Id, int NoteId, string email)
+        {
+            return repository.TrashCollab(Id, NoteId, email);
+        }
     }
 }
