@@ -2,6 +2,7 @@
 using Repository_layer.Context;
 using Repository_layer.Entity;
 using Repository_layer.Interfaces;
+using Repository_layer.Migrations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,6 +46,20 @@ namespace Repository_layer.Services
                 return updatelabel;
             }
             return null;
+        }
+        public UserLabelEntity Deletelabel(int id, int Noteid)
+        {
+            var deletelabel = fundoContext.UserLabels.FirstOrDefault(notes => (notes.NotesId == Noteid) && (notes.Id == id));
+            if(deletelabel != null)
+            {
+                fundoContext.UserLabels.Remove(deletelabel);
+                fundoContext.SaveChanges();
+            }
+            else
+            {
+                throw new Exception("wrong data");
+            }
+            return deletelabel;
         }
     }
 }

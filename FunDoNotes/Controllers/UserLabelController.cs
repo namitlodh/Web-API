@@ -3,6 +3,7 @@ using Manager_Layer.Interfaces;
 using Manager_Layer.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Repository_layer.Entity;
 using System;
@@ -65,6 +66,31 @@ namespace FunDoNotes.Controllers
             else
             {
                 return BadRequest(new ResModel<UserLabelEntity> { Success = false, Message = "label not updated", Data = response });
+            }
+        }
+        [Authorize]
+        [HttpDelete]
+        [Route("DeleteLabel")]
+        public ActionResult DeleteLabel(int NotesId)
+        {
+            try
+            {
+                int uid = Convert.ToInt32(User.FindFirst("Id").Value);
+                var response = userLabelManager.Deletelabel(NotesId, uid);
+                if (response != null)
+                {
+
+                    return Ok(new ResModel<UserLabelEntity> { Success = true, Message = "label Deleted Successfully", Data = response });
+
+                }
+                else
+                {
+                    return BadRequest(new ResModel<UserLabelEntity> { Success = false, Message = "label Deletion Failed", Data = response });
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new ResModel<UserLabelEntity> { Success = false, Message = ex.Message, Data = null });
             }
         }
     }

@@ -26,5 +26,9 @@ namespace Manager_Layer.Services
         {
             return repository.Updatelabel(id, Noteid, newname);
         }
+        public UserLabelEntity Deletelabel(int id, int Noteid)
+        {
+            return repository.Deletelabel(id, Noteid);
+        }
     }
 }
