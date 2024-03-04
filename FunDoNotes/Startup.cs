@@ -36,11 +36,13 @@ namespace FunDoNotes
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<FundoContext>(opts => opts.UseSqlServer(Configuration["ConnectionStrings:dofundo_db"]));
+            services.AddDbContext<FundoContext>(opts => opts.UseSqlServer(Configuration["ConnectionStrings:dofundonotes_db"]));
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IUserManager, UserManager>();
             services.AddTransient<INotesRepository, NotesRepository>();
             services.AddTransient<INotesManager, NoteManager>();
+            services.AddTransient<IUserLabelRepository, UserLabelRepository>();
+            services.AddTransient<IUserLabelManager, UserLabelManager>();
             services.AddControllers();
             services.AddSwaggerGen(option =>
             {

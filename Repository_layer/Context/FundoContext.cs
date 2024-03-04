@@ -13,5 +13,6 @@ namespace Repository_layer.Context
         public DbSet<DemoEntity> DemoEntities { get; set; }
         public DbSet<User> users { get; set; }
         public DbSet<NoteEntity> Notes { get; set; }
+        public DbSet<UserLabelEntity> UserLabels { get; set; }
     }
 }

@@ -111,11 +111,51 @@ namespace Repository_layer.Migrations
                     b.ToTable("users");
                 });
 
+            modelBuilder.Entity("Repository_layer.Entity.UserLabelEntity", b =>
+                {
+                    b.Property<int>("LabelId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<string>("LabelName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("NotesId")
+                        .HasColumnType("int");
+
+                    b.HasKey("LabelId");
+
+                    b.HasIndex("Id");
+
+                    b.HasIndex("NotesId");
+
+                    b.ToTable("UserLabels");
+                });
+
             modelBuilder.Entity("Repository_layer.Entity.NoteEntity", b =>
                 {
                     b.HasOne("Repository_layer.Entity.User", "NotesUser")
                         .WithMany()
                         .HasForeignKey("Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Repository_layer.Entity.UserLabelEntity", b =>
+                {
+                    b.HasOne("Repository_layer.Entity.User", "NotesUser")
+                        .WithMany()
+                        .HasForeignKey("Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Repository_layer.Entity.NoteEntity", "NoteEntity")
+                        .WithMany()
+                        .HasForeignKey("NotesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
