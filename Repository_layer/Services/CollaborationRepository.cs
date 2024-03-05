@@ -27,6 +27,8 @@ namespace Repository_layer.Services
                     collaborationEntity.CollanEmail = email;
                     collaborationEntity.Id = Id;
                     collaborationEntity.NotesId = Noteid;
+                    collaborationEntity.CreatedAt = DateTime.Now;
+                    collaborationEntity.UpdatedAt = DateTime.Now;
                     fundoContext.Collaborations.Add(collaborationEntity);
                     fundoContext.SaveChanges();
                     return collaborationEntity;
@@ -52,6 +54,7 @@ namespace Repository_layer.Services
             if(trash != null)
             {
                 trash.IsTrash = true;
+                trash.UpdatedAt= DateTime.UtcNow;
                 fundoContext.SaveChanges();
             }
             else 

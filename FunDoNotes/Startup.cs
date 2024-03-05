@@ -45,6 +45,7 @@ namespace FunDoNotes
             services.AddTransient<IUserLabelManager, UserLabelManager>();
             services.AddTransient<ICollaborationRepository, CollaborationRepository>();
             services.AddTransient<ICollaborationManager, CollaborationManager>();
+            services.AddStackExchangeRedisCache(options => { options.Configuration = Configuration["RedisCacheUrl"]; });
             services.AddControllers();
             services.AddSwaggerGen(option =>
             {

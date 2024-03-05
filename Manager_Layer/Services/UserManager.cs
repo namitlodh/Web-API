@@ -23,7 +23,7 @@ namespace Manager_Layer.Services
         {
             return repository.UserLogin(model);
         }
-        public string ForgotPassword(string email)
+        public ForgotPasswordModel ForgotPassword(string email)
         {
             return repository.ForgotPassword(email);
         }

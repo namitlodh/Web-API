@@ -154,17 +154,20 @@ namespace Repository_layer.Services
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
-        public string ForgotPassword(string email)
+        public ForgotPasswordModel ForgotPassword(string email)
         {
             var user = context.users.FirstOrDefault(a=>a.Email == email);
             if (user != null)
             {
-                string token = GenerateToken(user.Email, user.Id);
-                return token;
+                ForgotPasswordModel forgotPassword = new ForgotPasswordModel();
+                forgotPassword.Email = email;
+                forgotPassword.Id = user.Id;
+                forgotPassword.Token = GenerateToken(email, user.Id);
+                return forgotPassword;
             }
             else
             {
-                return null;
+                throw new Exception();
             }
         }
         public bool ResetPassword(string Email, ResetPasswordModel model)
