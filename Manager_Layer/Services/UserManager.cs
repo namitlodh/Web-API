@@ -39,5 +39,9 @@ namespace Manager_Layer.Services
         {
             return repository.ResetPassword(Email, model);
         }
+        public User CheckUser(RegisterModel model, int id)
+        {
+            return repository.CheckUser(model, id);
+        }
     }
 }

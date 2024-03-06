@@ -163,6 +163,22 @@ namespace FunDoNotes.Controllers
             }
             return userdetails;
         }
+        //Review
+        [HttpPost]
+        [Route("Check")]
+        public ActionResult Check(RegisterModel model,int Id)
+        {
+            var repsonse = userManager.CheckUser(model,Id);
+            if (repsonse != null)
+            {
+                return Ok(new ResModel<User> { Success = true, Message = "register successfull", Data = repsonse });
+            }
+            else
+            {
+
+                return BadRequest(new ResModel<User> { Success = false, Message = "Resgister failed", Data = repsonse });
+            }
+        }
     }
 }
 

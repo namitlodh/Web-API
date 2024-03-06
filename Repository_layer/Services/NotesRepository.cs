@@ -181,7 +181,34 @@ namespace Repository_layer.Services
             }
             catch (Exception ex)
             {
+                return ex.Message;
+            }
+        }
+
+        //Review
+        public NoteEntity Getnotes(string title, string description)
+        {
+            var note = fundoContext.Notes.FirstOrDefault(note=>note.Title == title && note.Description == description);
+            if(note != null)
+            {
+                return note;
+            }
+            else
+            {
                 return null;
+            }
+        }
+        public int Count(int id)
+        {
+            var countnotes= fundoContext.Notes.FirstOrDefault(notes=>notes.Id == id);
+            if(countnotes != null)
+            {
+                int count = fundoContext.Notes.Count(c=>c.Id==id);
+                return count;
+            }
+            else
+            {
+                return 0;
             }
         }
     }

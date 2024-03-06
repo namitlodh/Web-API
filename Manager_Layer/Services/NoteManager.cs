@@ -55,5 +55,13 @@ namespace Manager_Layer.Services
         {
             return repository.UploadImage(filepath, NotesId, Id);
         }
+        public NoteEntity Getnotes(string title, string description)
+        {
+            return repository.Getnotes(title, description);
+        }
+        public int Count(int id)
+        {
+            return repository.Count(id);
+        }
     }
 }

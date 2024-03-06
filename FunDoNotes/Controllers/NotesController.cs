@@ -203,5 +203,37 @@ namespace FunDoNotes.Controllers
                 return BadRequest(new ResModel<string> { Success = false, Message = "Image Uploaded Failed", Data = response });
             }
         }
+        //Review
+        [Authorize]
+        [HttpGet]
+        [Route("getnotes")]
+        public ActionResult GetNotes(string title,string description)
+        {
+            var response = notemanager.Getnotes(title,description);
+            if(response != null)
+            {
+                return Ok(new ResModel<NoteEntity> { Success =true,Message="Notes details",Data=response});
+            }
+            else
+            {
+                return BadRequest(new ResModel<NoteEntity> { Success=false, Message ="Notes not fetched", Data = response});
+            }
+        }
+        [Authorize]
+        [HttpGet]
+        [Route("count")]
+        public ActionResult Count()
+        {
+            int id= Convert.ToInt32(User.FindFirst("Id").Value);
+            int response = notemanager.Count(id);
+            if (response != 0)
+            {
+                return Ok(new ResModel<int> { Success = true, Message = "Total Notes details", Data = response });
+            }
+            else
+            {
+                return BadRequest(new ResModel<int> { Success = false, Message = "no Notes found", Data = response });
+            }
+        }
     }
 }

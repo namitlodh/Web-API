@@ -18,5 +18,7 @@ namespace Manager_Layer.Interfaces
         public NoteEntity Colour(int NotesId);
         public NoteEntity Reminder(int NotesId);
         public string UploadImage(string filepath, int NotesId, int Id);
+        public NoteEntity Getnotes(string title, string description);
+        public int Count(int id);
     }
 }

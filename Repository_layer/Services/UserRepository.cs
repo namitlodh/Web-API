@@ -185,5 +185,35 @@ namespace Repository_layer.Services
                 return false;
             }
         }
+        //Review
+        public User CheckUser(RegisterModel model,int id)
+        {
+            var user = context.users.FirstOrDefault(c => c.Id == id);
+            if (user != null)
+            {
+                user.Email = model.Email;
+                context.SaveChanges();
+                return user;
+            }
+            else
+            {
+                User newentity = new User();
+                newentity.FirstName= model.FirstName;
+                newentity.LastName= model.LastName;
+                newentity.Email = model.Email;
+                newentity.Password = Encryption("eergewweterg4tq3rewgq34t343g3tky", model.Password);
+                User newuser = context.users.FirstOrDefault(a => a.Email == model.Email);
+                if (newuser != null)
+                {
+                    throw new Exception("Email already exist");
+                }
+                else
+                {
+                    context.users.Add(newentity);
+                    context.SaveChanges();
+                    return newentity;
+                }
+            }
+        }
     }
 }
